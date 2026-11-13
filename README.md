@@ -22,4 +22,4 @@ Header, hero, daftar lagu populer, form newsletter, footer.
 4. Efek hover pada tombol dan kartu
 
 ## Cara menjalankan
-Buka `index.html` di browser. Tidak perlu instalasi.
+Buka `index.html` di browser.
