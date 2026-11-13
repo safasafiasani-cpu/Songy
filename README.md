@@ -10,7 +10,7 @@ https://www.spotify.com
 [https://twinnies.github.io/songy/](https://onecompiler.com/html/4593r5txf)
 
 ## Link repository
-[https://github.com/twinnies/songy](https://github.com/safasafiasani-cpu/Songy/blob/main/README.md)
+[https://github.com/twinnies/songy](https://github.com/safasafiasani-cpu/Songy/)
 
 ## Isi halaman
 Header, hero, daftar lagu populer, form newsletter, footer.
