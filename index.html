@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Songy – Musik untuk setiap suasana</title>
+<style>
+:root{--bg:#121212;--panel:#1c1c1e;--hover:#2a2a2d;--muted:#a7a7ad;--accent:#6ff2b5;--ink:#06261a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:#fff;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header{border-bottom:1px solid #2e2e32}
+.bar{display:flex;align-items:center;gap:20px;height:64px;position:relative}
+.logo{font-weight:800;font-size:1.3rem}
+nav{display:flex;gap:18px;margin-left:auto;color:var(--muted)}
+nav a:hover{color:#fff}
+.btn{border:0;cursor:pointer;font:inherit;font-weight:700;padding:10px 22px;border-radius:999px;background:var(--accent);color:var(--ink);transition:transform .15s}
+.btn:hover{transform:scale(1.05)}
+.burger{display:none;margin-left:auto;background:none;border:0;color:#fff;font-size:1.5rem;cursor:pointer}
+.hero{padding:70px 0 50px;text-align:center}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);margin:0 0 14px;letter-spacing:-.02em}
+.hero p{color:var(--muted);max-width:44ch;margin:0 auto 26px}
+h2{font-size:1.4rem;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.card{background:var(--panel);border-radius:12px;padding:12px;transition:background .2s}
+.card:hover{background:var(--hover)}
+.cover{aspect-ratio:1;border-radius:8px;margin-bottom:10px;position:relative}
+.play{position:absolute;right:8px;bottom:8px;width:40px;height:40px;border-radius:50%;border:0;background:var(--accent);color:var(--ink);cursor:pointer;opacity:0;transition:opacity .2s}
+.card:hover .play,.play.on,.play:focus-visible{opacity:1}
+.card h3{margin:0;font-size:1rem}.card p{margin:2px 0 0;color:var(--muted);font-size:.85rem}
+.news{margin:50px 0;background:var(--panel);border-radius:16px;padding:30px;text-align:center}
+.news form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.news input{padding:11px 16px;border-radius:999px;border:1px solid #444;background:#0006;color:#fff;font:inherit;min-width:230px}
+.msg{min-height:1.4em;margin:10px 0 0;font-size:.9rem}
+footer{border-top:1px solid #2e2e32;padding:24px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:640px){
+ .burger{display:block}
+ nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid #2e2e32;margin:0}
+ nav.open{display:flex}
+ nav a{padding:14px 4px}
+ .bar>.btn{display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+ <a class="logo" href="#">♪ Songy</a>
+ <nav id="nav"><a href="#populer">Populer</a><a href="#kabar">Berlangganan</a><a href="#">Bantuan</a></nav>
+ <button class="btn" type="button">Masuk</button>
+ <button class="burger" id="burger" aria-label="Buka menu">☰</button>
+</div></header>
+
+<main class="wrap">
+ <section class="hero">
+  <h1>Musik untuk setiap suasana</h1>
+  <p>Dengarkan lagu favoritmu kapan saja dan temukan artis baru setiap hari.</p>
+  <button class="btn" type="button">Coba gratis</button>
+ </section>
+
+ <section id="populer">
+  <h2>Lagi populer</h2>
+  <div class="grid" id="grid"></div>
+ </section>
+
+ <section class="news" id="kabar">
+  <h2>Rekomendasi lagu tiap minggu</h2>
+  <form id="form" novalidate>
+   <input type="email" id="email" placeholder="Email kamu" aria-label="Email">
+   <button class="btn" type="submit">Berlangganan</button>
+  </form>
+  <p class="msg" id="msg" role="status"></p>
+ </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Songy (proyek latihan, bukan layanan resmi)</span><span>Gambar dan konten hanya placeholder</span></div></footer>
+
+<script>
+const songs=[["Senja di Kediri","Laras Pagi","#6ff2b5,#1f6f55"],["Hujan Bulan Lalu","Teduh Kota","#7b61ff,#2a1f6f"],["Langkah Kecil","Arka","#ff8a5c,#7a2e12"],["Nada Pesisir","Samudra","#4cc9f0,#14506b"],["Kopi Tubruk","Rasa Malam","#f7b801,#6b4b00"],["Lampu Jalan","Mira & Dewa","#ff5d8f,#6b1737"]];
+const grid=document.getElementById('grid');
+songs.forEach(([t,a,c])=>{const[x,y]=c.split(',');
+ grid.insertAdjacentHTML('beforeend',`<div class="card"><div class="cover" style="background:linear-gradient(135deg,${x},${y})"><button class="play" aria-label="Putar ${t}">▶</button></div><h3>${t}</h3><p>${a}</p></div>`)});
+
+// Interaksi 1: menu hamburger
+const nav=document.getElementById('nav'),burger=document.getElementById('burger');
+burger.onclick=()=>{const o=nav.classList.toggle('open');burger.textContent=o?'✕':'☰'};
+
+// Interaksi 2: tombol play
+grid.addEventListener('click',e=>{const b=e.target.closest('.play');if(!b)return;
+ const on=!b.classList.contains('on');
+ grid.querySelectorAll('.play').forEach(p=>{p.classList.remove('on');p.textContent='▶'});
+ if(on){b.classList.add('on');b.textContent='❚❚'}});
+
+// Interaksi 3: form dengan validasi
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();
+ const m=document.getElementById('msg'),v=document.getElementById('email').value.trim();
+ if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.style.color='#6ff2b5';m.textContent='Terima kasih, kamu sudah berlangganan!';e.target.reset()}
+ else{m.style.color='#ff8a8a';m.textContent='Format email belum benar. Contoh: nama@email.com'}});
+</script>
+</body>
+</html>
