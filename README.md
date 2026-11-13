@@ -4,13 +4,13 @@ Tugas latihan: membuat ulang (clone) tampilan website streaming musik.
 Nama, logo, lagu, dan gambar hanya placeholder, bukan layanan resmi.
 
 ## Website asli yang di-clone (pembanding)
-https://www.spotify.com  (diganti jika memakai referensi lain)
+https://www.spotify.com  
 
 ## Link hasil website
-(isi setelah di-hosting, misalnya GitHub Pages / Netlify / Vercel)
+[https://twinnies.github.io/songy/](https://onecompiler.com/html/4593r5txf)
 
 ## Link repository
-(isi link GitHub)
+https://github.com/usernamekamu/songy
 
 ## Isi halaman
 Header, hero, daftar lagu populer, form newsletter, footer.
